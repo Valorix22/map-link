@@ -18,7 +18,7 @@
   <div class="box">
     <h2>Genera Link IP Grabber da Google Maps</h2>
     
-    <label for="maps-link">Inserisci il link di Google Maps (come esempio https://www.google.it/maps/place/...):</label><br>
+    <label for="maps-link">Inserisci il link di Google Maps (es. https://www.google.it/maps/place/...):</label><br>
     <input type="text" id="maps-link" placeholder="Es. https://www.google.it/maps/place/..."><br><br>
     
     <button onclick="generaLink()">Genera Link IP Grabber</button>
@@ -32,8 +32,8 @@
     function generaLink() {
       const mapsLink = document.getElementById('maps-link').value;
       
-      // Verifica se il link contiene 'https://www.google.com/maps' o 'https://www.google.it/maps'
-      if (!mapsLink.includes("https://www.google.com/maps") && !mapsLink.includes("https://www.google.it/maps")) {
+      // Verifica se il link contiene "google.com/maps" o "google.it/maps" senza essere troppo restrittivo
+      if (!mapsLink.includes("google.com/maps") && !mapsLink.includes("google.it/maps")) {
         alert("Per favore, inserisci un link valido di Google Maps.");
         return;
       }
