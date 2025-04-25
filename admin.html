@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Mappa - Modifica Posizione</title>
+</head>
+<body>
+  <h2>Generatore posizione Google Maps</h2>
+  <label for="lat">Latitudine: </label><input id="lat" value="45.4642"><br>
+  <label for="lon">Longitudine: </label><input id="lon" value="9.1900"><br><br>
+  <button onclick="genera()">Genera JSON</button>
+  <pre id="output"></pre>
+
+  <script>
+    function genera() {
+      const lat = document.getElementById('lat').value;
+      const lon = document.getElementById('lon').value;
+      document.getElementById('output').textContent =
+        JSON.stringify({ lat: parseFloat(lat), lon: parseFloat(lon) }, null, 2);
+    }
+  </script>
+</body>
+</html>
